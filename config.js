@@ -5,7 +5,7 @@
 
 const SITE = {
   // ---- HIER ÄNDERN: Name & Domain --------------------------------------
-  name: "Building Service Zeqiraj",
+  name: "Firma Zeqiraj",
   shortName: "Zeqiraj",
   domain: "buildingservicezeqiraj.de",          // pa https://
   tagline: "Maler- & Renovierungsarbeiten in Fürstenfeldbruck und Umgebung",
