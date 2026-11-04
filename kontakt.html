@@ -42,14 +42,18 @@
 </div>
 <div>
 <h2>Anfrage senden</h2>
-<p class="section-sub" style="margin-bottom:16px">Füllen Sie das Formular aus – Ihr E-Mail-Programm öffnet sich mit der fertigen Nachricht.</p>
-<form id="contact-form">
+<p class="section-sub" style="margin-bottom:16px">Füllen Sie das Formular aus und senden Sie uns Ihre Anfrage direkt. Wir melden uns schnellstmöglich bei Ihnen.</p>
+<form id="contact-form" name="kontakt" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+<input type="hidden" name="form-name" value="kontakt">
+<p hidden>
+  <label>Dieses Feld nicht ausfüllen: <input name="bot-field"></label>
+</p>
 <div><label for="name">Name *</label><input id="name" name="name" required autocomplete="name"></div>
 <div><label for="email">E-Mail *</label><input id="email" name="email" type="email" required autocomplete="email"></div>
 <div><label for="tel">Telefon</label><input id="tel" name="telefon" type="tel" autocomplete="tel"></div>
 <div><label for="msg">Ihre Nachricht *</label><textarea id="msg" name="nachricht" rows="6" required placeholder="Was soll gemacht werden? Ort, Raumgröße, Wunschtermin …"></textarea></div>
-<label class="check"><input type="checkbox" required> <span>Ich habe die <a href="datenschutz.html">Datenschutzerklärung</a> gelesen und bin mit der Verarbeitung meiner Angaben zur Bearbeitung der Anfrage einverstanden.</span></label>
-<button class="btn" type="submit">Per E-Mail senden</button>
+<label class="check"><input type="checkbox" name="datenschutz" value="accepted" required> <span>Ich habe die <a href="datenschutz.html">Datenschutzerklärung</a> gelesen und bin mit der Verarbeitung meiner Angaben zur Bearbeitung der Anfrage einverstanden.</span></label>
+<button class="btn" type="submit">Anfrage senden</button>
 <p id="form-note" role="status" style="display:none;font-size:.92rem"></p>
 </form>
 </div></div></div></section>
