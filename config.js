@@ -7,7 +7,7 @@ const SITE = {
   // ---- HIER ÄNDERN: Name & Domain --------------------------------------
   name: "Firma Zeqiraj",
   shortName: "Zeqiraj",
-  domain: "buildingservicezeqiraj.de",          // pa https://
+  domain: "firma-zeqiraj.de",          // pa https://
   tagline: "Renovierung & Trockenbau in Fürstenfeldbruck und Umgebung",
 
   // ---- HIER ÄNDERN: Kontakt --------------------------------------------
