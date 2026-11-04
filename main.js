@@ -48,7 +48,7 @@
       <div class="topbar"><div class="container"><span class="topbar-info">${svg("map-pin")} ${esc(SITE.street)}, ${esc(SITE.zip)} ${esc(SITE.city)}</span>
       <span class="topbar-contact">${svg("phone")} <a href="tel:${esc(SITE.mobileRaw)}">${esc(SITE.mobile)}</a> <span aria-hidden="true">·</span> <a href="mailto:${esc(SITE.email)}">${esc(SITE.email)}</a></span></div></div>
       <header class="site"><div class="container">
-        <a class="logo" href="index.html" aria-label="${esc(SITE.name)} – zur Startseite"><span class="mark" aria-hidden="true">Z</span><span class="logo-text"><span class="logo-title">${esc(SITE.name)}</span><span class="logo-sub">Maler &amp; Renovierung</span></span></a>
+        <a class="logo" href="index.html" aria-label="${esc(SITE.name)} – zur Startseite"><span class="mark" aria-hidden="true">Z</span><span class="logo-text"><span class="logo-title">${esc(SITE.name)}</span><span class="logo-sub">Renovierung &amp; Trockenbau</span></span></a>
         <button class="burger" type="button" aria-label="Menü öffnen" aria-controls="nav" aria-expanded="false">${svg("menu")}</button>
         <nav id="nav" aria-label="Hauptnavigation"><ul>${links}
           <li class="nav-action"><a class="btn" href="tel:${esc(SITE.mobileRaw)}">${svg("phone")} Jetzt anrufen</a></li>
