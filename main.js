@@ -102,20 +102,61 @@
     container.replaceWith(frame);
   });
 
-  // Mailto statt Server: Die Person schickt die Anfrage aus der eigenen E-Mail-App.
+ 
+  // Kontaktformular direkt über Netlify Forms senden.
   const form = document.getElementById("contact-form");
-  if (form) form.addEventListener("submit", event => {
-    event.preventDefault();
-    const data = new FormData(form);
-    const body = `Name: ${data.get("name")}\nE-Mail: ${data.get("email")}\nTelefon: ${data.get("telefon") || "–"}\n\n${data.get("nachricht")}`;
-    const subject = "Anfrage über die Website – " + data.get("name");
-    const note = document.getElementById("form-note");
-    if (note) {
-      note.innerHTML = `Ihr E-Mail-Programm sollte sich öffnen. Bitte dort auf „Senden“ klicken. Falls nicht: <a href="mailto:${esc(SITE.email)}">${esc(SITE.email)}</a>.` + (SITE.whatsapp ? ` Alternativ <a target="_blank" rel="noopener noreferrer" href="https://wa.me/${esc(SITE.whatsapp)}?text=${encodeURIComponent(body)}">per WhatsApp senden</a>.` : "");
-      note.style.display="block";
-    }
-    window.location.href = `mailto:${SITE.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  });
+
+  if (form) {
+    form.addEventListener("submit", async event => {
+      event.preventDefault();
+
+      const note = document.getElementById("form-note");
+      const button = form.querySelector('button[type="submit"]');
+      const originalText = button.textContent;
+
+      button.disabled = true;
+      button.textContent = "Wird gesendet...";
+
+      if (note) {
+        note.style.display = "none";
+        note.textContent = "";
+      }
+
+      try {
+        const data = new FormData(form);
+
+        const response = await fetch(form.getAttribute("action") || window.location.pathname, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          body: new URLSearchParams(data).toString()
+        });
+
+        if (!response.ok) {
+          throw new Error("Form submission failed: " + response.status);
+        }
+
+        form.reset();
+
+        if (note) {
+          note.textContent = "Vielen Dank! Ihre Anfrage wurde erfolgreich übermittelt.";
+          note.style.display = "block";
+        }
+      } catch (error) {
+        console.error("Kontaktformular:", error);
+
+        if (note) {
+          note.textContent = "Ihre Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut oder kontaktieren Sie uns telefonisch.";
+          note.style.display = "block";
+        }
+      } finally {
+        button.disabled = false;
+        button.textContent = originalText;
+      }
+    });
+  }
+
 
   // HIER ÄNDERN: Neue Leistungen und Icons in config.js (icon: paint-roller etc.).
   const serviceIcons = ["paint-roller","layers","wallpaper","zap","floor","bath"];
