@@ -8,7 +8,7 @@ const SITE = {
   name: "Firma Zeqiraj",
   shortName: "Zeqiraj",
   domain: "buildingservicezeqiraj.de",          // pa https://
-  tagline: "Maler- & Renovierungsarbeiten in Fürstenfeldbruck und Umgebung",
+  tagline: "Renovierung & Trockenbau in Fürstenfeldbruck und Umgebung",
 
   // ---- HIER ÄNDERN: Kontakt --------------------------------------------
   owner: "Halil Zeqiraj",
