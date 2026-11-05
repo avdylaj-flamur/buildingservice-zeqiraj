@@ -103,7 +103,7 @@
   });
 
  
-  // Kontaktformular direkt über Netlify Forms senden.
+  // Kontaktformular über Formspree senden.
   const form = document.getElementById("contact-form");
 
   if (form) {
@@ -125,13 +125,13 @@
       try {
         const data = new FormData(form);
 
-        const response = await fetch(form.getAttribute("action") || window.location.pathname, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
-          },
-          body: new URLSearchParams(data).toString()
-        });
+        const response = await fetch(form.action, {
+           method: "POST",
+           headers: {
+             "Accept": "application/json"
+        },
+        body: data
+         });
 
         if (!response.ok) {
           throw new Error("Form submission failed: " + response.status);
