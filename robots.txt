@@ -2,3 +2,4 @@
 User-agent: *
 Allow: /
 Sitemap: https://firma-zeqiraj.de/sitemap.xml
+# deploy-check 2026-11-05
